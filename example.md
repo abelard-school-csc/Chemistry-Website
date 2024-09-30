@@ -3,16 +3,15 @@
 ## Reaction order explanation
 Explanation here...
 
-## Example CSV
+# Example CSV
 You can export your google sheet as a csv
 [insert csv import box]
 
-## Display results
+# Display results
 ```
-predictions and stuff
-```
-
+avrage r vals + your reaction is x order
 ```
 
-graph images here
+```
+graph images here and r vals for each graph
 ```
