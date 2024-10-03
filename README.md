@@ -4,6 +4,6 @@ In order to recreate this web-app and run it locally:
 - Create a virtual Python environment with `python3 -m venv .venv`
 - Run the virtual Python environment with `source .venv/bin/activate`
 - Download the dependencies with `pip install -r requirements.txt`
-- To run the server locally, simply run the server script with `python3 server.py`
+- To run the server locally, simply run the server script with `python3 app.py`
 - In order to view the live web server, go to `localhost:5000` or `127.0.0.1:5000`
 - In order to deactivate the virtual environment, run `deactivate`
