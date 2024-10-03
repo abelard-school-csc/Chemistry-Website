@@ -1,2 +1,12 @@
-.venv
-uploads
+__pycache__/
+*.pyc
+
+uploads/
+
+.venv/
+.env/
+
+*.DS_Store
+*.log
+*.sqlite3
+*.egg-info/

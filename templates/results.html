@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reaction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="results-container">
+        <h1>Reaction Results</h1>
+        <p>R-values:</p>
+        <p>Zeroeth: {{ r_values[0] }}</p>
+        <p>First: {{ r_values[1] }}</p>
+        <p>Second: {{ r_values[2] }}</p>
+        
+        <h2>Generated Graphs:</h2>
+        {% for plot in plot_filenames %}
+            <div class="plot-container">
+                <h3>Plot for Reaction {{ loop.index }}</h3>
+                <img src="{{ url_for('output', filename=plot) }}" alt="{{ plot }}">
+            </div>
+        {% endfor %}
+        <a href="/">Back to Upload</a>
+    </div>
+</body>
+</html>
