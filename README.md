@@ -24,3 +24,7 @@ In order to recreate this web-app and run it locally:
 │   └── results.html
 └── uploads
 ```
+
+# Network Structure
+![image](first.png)
+![image](second.png)
