@@ -1,57 +1,89 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    font-family: 'Roboto', sans-serif; /* Use a more modern font */
+    background-color: #e8f0f2; /* Light cyan background for a clean look */
     margin: 0;
     padding: 20px;
+    color: #2c3e50; /* Darker text for better readability */
 }
 
 h1 {
     text-align: center;
+    color: #2c3e50; /* Consistent header color */
+    margin-bottom: 20px; /* Spacing below header */
+    font-size: 2.5em; /* Larger header for emphasis */
 }
 
 .upload-container, .results-container {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 10px; /* Slightly rounded corners */
+    padding: 30px; /* Padding for comfort */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
     margin: 0 auto;
     max-width: 600px;
+    transition: box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+.upload-container:hover, .results-container:hover {
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25); /* Enhanced shadow on hover */
 }
 
 input[type="file"] {
     display: block;
     margin: 20px auto;
+    padding: 10px; /* Increased padding for better touch targets */
+    border: 1px solid #4CAF50; /* Green border for file input */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background for input */
 }
 
 button {
     display: block;
     margin: 20px auto;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Increased padding for buttons */
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Green button */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for background color and lift */
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* Darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
 .plot-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20px; /* Space above plot container */
 }
 
 img {
     max-width: 100%;
     height: auto;
     margin: 10px 0;
+    border-radius: 8px; /* Rounded corners for images */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for images */
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: none; /* Remove default bullet points */
     padding: 0;
+}
+
+li {
+    padding: 12px;
+    border-bottom: 1px solid #ddd; /* Divider for list items */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+li:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+li:last-child {
+    border-bottom: none; /* Remove border from the last item */
 }

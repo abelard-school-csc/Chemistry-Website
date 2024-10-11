@@ -8,16 +8,17 @@ def process_csv_and_generate_graph(csv_file_path, output_folder):
     # Read CSV file
     df = pd.read_csv(csv_file_path)
 
-    # Clean data
-    df = df.iloc[2:].reset_index(drop=True)
+    # Clean data: skip the first row and reset the index
+    df.columns = df.iloc[0]  # Set the first row as header
+    df = df[1:].reset_index(drop=True)
 
-    # List of experiments (columns in the CSV)
-    namelist = ['Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5']
+    # Rename columns for easier access
+    df.columns = ['time', 'experiment_1', 'experiment_2', 'experiment_3', 'experiment_4', 'experiment_5']
 
     # Convert values to numeric
-    df['Unnamed: 0'] = pd.to_numeric(df['Unnamed: 0'], errors='coerce')
-    for i in namelist:
-        df[i] = pd.to_numeric(df[i], errors='coerce')
+    df['time'] = pd.to_numeric(df['time'], errors='coerce')
+    for col in df.columns[1:]:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
 
     # Track total r-values for zeroth, first, and second-order reactions
     zero_sum = 0
@@ -26,18 +27,21 @@ def process_csv_and_generate_graph(csv_file_path, output_folder):
 
     plot_filenames = []
 
+    # List of experiments
+    namelist = df.columns[1:]  # Get all experiment columns
+
     # Plot for each experiment
-    for idx, i in enumerate(namelist):
+    for idx, exp in enumerate(namelist):
         # Define x and y
-        x = df['Unnamed: 0']
-        y = df[i]
+        x = df['time']
+        y = df[exp]
 
         plt.figure(figsize=(12, 4))
 
         # Plot raw data
         plt.subplot(1, 3, 1)
         plt.scatter(x, y, label='Raw Data')
-        plt.xlabel('Time')
+        plt.xlabel('Time (s)')
         plt.ylabel('Volume')
         plt.title('Raw Data')
 
@@ -50,8 +54,8 @@ def process_csv_and_generate_graph(csv_file_path, output_folder):
         # First-order linearization
         plt.subplot(1, 3, 2)
         plt.scatter(x, np.log(y), label='Linearized (1st Order)')
-        plt.xlabel('time')
-        plt.ylabel('ln(volume)')
+        plt.xlabel('Time (s)')
+        plt.ylabel('ln(Volume)')
         plt.title('Linearized (1st Order)')
         slope, intercept, r_value, p_value, std_err = linregress(x, np.log(y))
         plt.plot(x, slope * x + intercept, color='red', label='Regression Line')
@@ -61,8 +65,8 @@ def process_csv_and_generate_graph(csv_file_path, output_folder):
         # Second-order linearization
         plt.subplot(1, 3, 3)
         plt.scatter(x, 1/y, label='Linearized (2nd Order)')
-        plt.xlabel('Time')
-        plt.ylabel('1/volume')
+        plt.xlabel('Time (s)')
+        plt.ylabel('1/Volume')
         plt.title('Linearized (2nd Order)')
         slope, intercept, r_value, p_value, std_err = linregress(x, 1/y)
         plt.plot(x, slope * x + intercept, color='red', label='Regression Line')
